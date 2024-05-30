@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import { modeTypes } from "../../types/modeTypes";
+import { ModeContext } from "../../context/modeContext";
 
 const AccordionContainer = styled.div`
   display: flex;
-  background-color: #29292b;
+  // background-color: #29292b;
   width: 90%;
-  border: 1px solid #434345;
+  // border: 1px solid #434345;
 `;
 
 const AccordionSection = styled.div`
   flex: ${(props) => (props.isOpen ? "0 0 500px" : "1")};
   max-width: ${(props) => (props.isOpen ? "500px" : "none")};
-  background-color: ${(props) => (props.isOpen ? "#434345" : "#29292b")};
-  color: white;
+  // background-color: ${(props) => (props.isOpen ? "#434345" : "#29292b")};
+  // color: white;
   cursor: pointer;
   transition: flex 0.5s ease-in-out, max-width 0.5s ease-in-out,
-  background-color 0.5s ease-in-out;
+    background-color 0.5s ease-in-out;
   border-right: 1px solid #434345;
 
   &:last-child {
@@ -36,6 +38,8 @@ const AccordionContent = styled.p`
 
 const HorizontalAccordion = () => {
   const [openIndex, setOpenIndex] = useState(0);
+  const { mode } = useContext(ModeContext);
+  const isDarkMode = mode === modeTypes.DARK_MODE;
 
   const sections = [
     {
@@ -61,7 +65,13 @@ const HorizontalAccordion = () => {
   ];
 
   return (
-    <AccordionContainer>
+    <AccordionContainer
+      className={`${
+        isDarkMode
+          ? "bg-[#29292b] text-white"
+          : "bg-white text-black border-none"
+      }`}
+    >
       {sections.map((section, index) => (
         <AccordionSection
           className="flex flex-col items-start justify-center gap-10 text-[18px] p-5 h-[230px]"

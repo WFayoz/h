@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import Marquee from "react-fast-marquee";
 import worker from "../../../public/worker.jpeg";
 import HorizontalAccordion from "./HorizontalAccor";
 import Accordion from "./Accordion";
+import { ModeContext } from "../../context/modeContext";
+import { modeTypes } from "../../types/modeTypes";
+import Footer from "./Footer";
+import FooterBot from "./FooterBottom";
 
 const Section1 = () => {
+  const { mode } = useContext(ModeContext);
+  const isDarkMode = mode === modeTypes.DARK_MODE;
+
   return (
-    <div className="  border-t border-t-[#434345] w-full flex flex-col items-end justify-center">
+    <div
+      className={` p-6 border-t border-t-[#434345] w-full flex flex-col items-end justify-center  ${
+        isDarkMode
+          ? "bg-[#29292b] text-white"
+          : "bg-white text-black border-none"
+      }`}
+    >
       <div className="w-[90%] flex px-5 pt-32 pb-10  border-l border-[#434345] flex-col gap-5">
-        <h3 className="text-white text-[32px]">
+        <h3 className=" text-[32px]">
           With 20+ years of providing software development services for
           technological enterprises, successful startups, and AI-empowered
           companies worldwide, our developers demonstrate exceptional efficiency
           and expertise.
         </h3>
-        <p className="text-white text-right">
+        <p className=" text-right">
           On average, Vention clients benefit £475k from annual savings as a
           result of <br /> our collaboration.
         </p>
@@ -25,11 +38,11 @@ const Section1 = () => {
           <div className="flex gap-32">
             <div>
               <h1 className="text-[#ff6947] text-[68px]">500+</h1>
-              <p className="text-white text-[18px]">award-winning clients</p>
+              <p className=" text-[18px]">award-winning clients</p>
             </div>
             <div>
               <h1 className="text-[#ff6947] text-[68px]">$15B+</h1>
-              <p className="text-white text-[18px]">in client acquisitions</p>
+              <p className="  text-[18px]">in client acquisitions</p>
             </div>
           </div>
         </div>
@@ -42,27 +55,27 @@ const Section1 = () => {
           ].map(({ stat, label }) => (
             <div key={stat}>
               <h1 className="text-[#ff6947] text-[68px]">{stat}</h1>
-              <p className="text-white text-[18px]">{label}</p>
+              <p className=" text-[18px]">{label}</p>
             </div>
           ))}
         </div>
       </div>
       <div className="w-[90%] px-5 pr-10 py-5 pt-32 flex border-t border-l border-[#434345] flex-col">
-        <h3 className="text-white text-[40px]">Trusted by the best</h3>
-        <p className="text-white text-[16px]">
+        <h3 className=" text-[40px]">Trusted by the best</h3>
+        <p className=" text-[16px]">
           Companies ranging from early-stage startups to Fortune 500 enterprises
           partner with us to develop game-changing growth solutions.
         </p>
       </div>
-      <div className="w-[90%] -z-10 px-5 pr-10 py-10   flex border-t border-l border-[#434345] flex-col">
+      <div className="w-[90%]  px-5 pr-10 py-10   flex border-t border-l border-[#434345] flex-col">
         <Marquee>
-          <div className="mx-[60px] text-white text-[40px]">CocaCola</div>
-          <div className="mx-[60px] text-white text-[40px]">Costa</div>
-          <div className="mx-[60px] text-white text-[40px]">ClassPass</div>
-          <div className="mx-[60px] text-white text-[40px]">BeVi</div>
-          <div className="mx-[60px] text-white text-[40px]">EY</div>
-          <div className="mx-[60px] text-white text-[40px]">POSTman</div>
-          <div className="mx-[60px] text-white text-[40px]">PayPal</div>
+          <div className="mx-[60px]  text-[40px]">CocaCola</div>
+          <div className="mx-[60px]  text-[40px]">Costa</div>
+          <div className="mx-[60px]  text-[40px]">ClassPass</div>
+          <div className="mx-[60px]  text-[40px]">BeVi</div>
+          <div className="mx-[60px]  text-[40px]">EY</div>
+          <div className="mx-[60px]  text-[40px]">POSTman</div>
+          <div className="mx-[60px]  text-[40px]">PayPal</div>
         </Marquee>
       </div>
       <div className="w-[90%] flex border border-[#434345]">
@@ -70,7 +83,7 @@ const Section1 = () => {
           <img src={worker} alt="" />
         </div>
         <div className="flex items-end justify-start">
-          <h2 className="pl-8 pb-4 text-white text-[80px]">How we work</h2>
+          <h2 className="pl-8 pb-4  text-[80px]">How we work</h2>
         </div>
       </div>
       <HorizontalAccordion />
@@ -79,11 +92,11 @@ const Section1 = () => {
           <span className="text-[22px] text-[#ff6947]">
             We speak your language
           </span>
-          <h1 className="text-white text-[32px]">
+          <h1 className=" text-[32px]">
             Wondering how well we know your industry? Curious which tech stacks
             we support?
           </h1>
-          <p className="text-white text-[16px]">
+          <p className=" text-[16px]">
             Spanning 30+ verticals and 25+ technologies, our team has designed
             and implemented innovative solutions to suit even the most unique
             needs.
@@ -126,8 +139,8 @@ const Section1 = () => {
       </div>
       <div className="w-[90%] px-5  py-6 pt-32 flex items-center justify-end border-t border-l border-[#434345]">
         <div className="w-[50%] flex flex-col gap-4">
-          <h1 className="text-white text-[32px]">Discover Vention in action</h1>
-          <p className="text-white text-[16px]">
+          <h1 className=" text-[32px]">Discover Vention in action</h1>
+          <p className=" text-[16px]">
             See firsthand what sets us apart — and how our approach has
             translated into exponential growth for our clients worldwide. Hit
             play to begin your journey with us.
@@ -147,49 +160,52 @@ const Section1 = () => {
         ></iframe>
       </div>
       <div className="w-[90%] px-5 pr-10 py-5 pt-32 flex border-t border-l border-[#434345] flex-col">
-        <h3 className="text-white text-[40px]">Partnerships</h3>
-        <p className="text-white text-[16px]">
+        <h3 className=" text-[40px]">Partnerships</h3>
+        <p className=" text-[16px]">
           Our network includes the world’s top tech leaders, ensuring that our
           developers always have access to cutting-edge technologies and
           products.
         </p>
       </div>
-      <div className="w-[90%] -z-10 px-5 pr-10 py-10   flex border-t border-l border-[#434345] flex-col">
-        <Marquee>
-          <div className="mx-[60px] text-white text-[40px]">CocaCola</div>
-          <div className="mx-[60px] text-white text-[40px]">Costa</div>
-          <div className="mx-[60px] text-white text-[40px]">ClassPass</div>
-          <div className="mx-[60px] text-white text-[40px]">BeVi</div>
-          <div className="mx-[60px] text-white text-[40px]">EY</div>
-          <div className="mx-[60px] text-white text-[40px]">POSTman</div>
-          <div className="mx-[60px] text-white text-[40px]">PayPal</div>
+      <div className="w-[90%] z-10 px-5 pr-10 py-10   flex border-t border-l border-[#434345] flex-col">
+        <Marquee >
+          <div className="mx-[60px]  text-[40px]">CocaCola</div>
+          <div className="mx-[60px]  text-[40px]">Costa</div>
+          <div className="mx-[60px]  text-[40px]">ClassPass</div>
+          <div className="mx-[60px]  text-[40px]">BeVi</div>
+          <div className="mx-[60px]  text-[40px]">EY</div>
+          <div className="mx-[60px]  text-[40px]">POSTman</div>
+          <div className="mx-[60px]  text-[40px]">PayPal</div>
         </Marquee>
+
       </div>
       <div className="w-[90%]  px-5  pb-4 pt-28   flex justify-center items-end border-t border-l border-[#434345]">
-        <h2 className="text-white text-[40px]">Our work</h2>
+        <h2 className=" text-[40px]">Our work</h2>
       </div>
       <div className="w-[90%]      flex justify-center items-end border-t border-l border-[#434345]">
         <Accordion />
       </div>
       <div className="w-[90%] px-5 pr-10 py-5 pt-32 flex border-t border-l border-[#434345] flex-col">
-        <h3 className="text-white text-[40px]">
+        <h3 className=" text-[40px]">
           Recognized as a leader by those in the know
         </h3>
-        <p className="text-white text-[16px]">
+        <p className=" text-[16px]">
           Year after year, Vention has been counted among best-in-class
           companies by the industry’s most respected institutions.
         </p>
       </div>
-      <div className="w-[90%] -z-10 px-5 pr-10 py-10   flex border-t border-l border-[#434345] flex-col">
+      <div className="w-[90%] px-5 pr-10 py-10   flex border-t border-l border-[#434345] flex-col">
         <div className="flex">
-          <div className="mx-[30px] text-white text-[40px]">CocaCola</div>
-          <div className="mx-[30px] text-white text-[40px]">Costa</div>
-          <div className="mx-[30px] text-white text-[40px]">ClassPass</div>
-          <div className="mx-[30px] text-white text-[40px]">BeVi</div>
-          <div className="mx-[30px] text-white text-[40px]">EY</div>
-          <div className="mx-[30px] text-white text-[40px]">POSTman</div>
+          <div className="mx-[30px]  text-[40px]">CocaCola</div>
+          <div className="mx-[30px]  text-[40px]">Costa</div>
+          <div className="mx-[30px]  text-[40px]">ClassPass</div>
+          <div className="mx-[30px]  text-[40px]">BeVi</div>
+          <div className="mx-[30px]  text-[40px]">EY</div>
+          <div className="mx-[30px]  text-[40px]">POSTman</div>
         </div>
       </div>
+      <Footer/>
+      <FooterBot/>
     </div>
   );
 };

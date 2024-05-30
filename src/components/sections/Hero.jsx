@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { RxArrowTopRight } from "react-icons/rx";
+import { modeTypes } from "../../types/modeTypes";
+import { ModeContext } from "../../context/modeContext";
 
 const texts = [
   "Engineering peace of mind",
@@ -16,6 +18,9 @@ const imageSrcs = [
 ];
 
 const Hero = () => {
+  const { mode } = useContext(ModeContext);
+  const theme = mode === modeTypes.DARK_MODE ? true : false;
+
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -26,7 +31,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="pt-16 w-full max-w-screen-xl px-5 mx-auto">
+    <div
+      className={` pt-16 w-full max-w-screen-xl px-5 mx-auto ${
+        mode === modeTypes.DARK_MODE
+          ? " bg-[#29292b] tex-white "
+          : " bg-white text-black"
+      }`}
+    >
       <div className="flex">
         <div
           className={`w-1/2 px-6 py-9 ${
@@ -54,7 +65,7 @@ const Hero = () => {
                 } opacity-40 hover:opacity-100 inline-block hover:pr-[25%] transition-all`}
                 onClick={() => setCount(index)}
               >
-                <h1 className="font-medium text-lg text-white">0{index + 1}</h1>
+                <h1 className="font-medium text-lg ">0{index + 1}</h1>
               </div>
             ))}
           </div>
@@ -64,12 +75,12 @@ const Hero = () => {
         <div className="w-1/2 flex p-10">
           <div className="w-1/2"></div>
           <div className="w-1/2 flex items-end justify-end flex-col">
-            <p className="text-lg text-white opacity-85">
+            <p className="text-lg  opacity-85">
               Vention developers partner with innovative companies from startups
               to Fortune 500s, lending the AI engineering expertise to propel
               them to new heights and the edge to outpace the competition.
             </p>
-            <button className="w-full mt-16 flex items-center justify-center gap-2 px-7 py-5 text-left bg-red-500 hover:text-white transition hover:bg-[#ff6947] font-medium text-2xl">
+            <button className="w-full mt-16 flex items-center justify-center gap-2 px-7 py-5 text-left bg-red-500 hover: transition hover:bg-[#ff6947] font-medium text-2xl">
               Get an estimate <RxArrowTopRight />
             </button>
           </div>
